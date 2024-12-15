@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const pointsCells = document.querySelectorAll('.points');
+    const pointsCells = document.querySelectorAll('.score');
     const totalPointsCell = document.getElementById('totalPoints');
     const editableCells = document.querySelectorAll('[contenteditable="true"]');
 
