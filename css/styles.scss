@@ -1,14 +1,40 @@
+// Variables
+$font-base: Arial, sans-serif;
+$font-desktop: 'Times New Roman', Times, serif;
+$font-tablet: 'Comic Sans MS', cursive, sans-serif;
+$font-phone: 'Bubblegum Sans', cursive;
+$color-dark: #333;
+$color-light: #f4f4f4;
+$color-header-desktop: #222;
+$color-header-tablet: #ffb6c1;
+$color-text-light: #fff;
+$color-text-dark: #000;
+$color-background-tablet: #ffebcd;
+$color-box-phone: #ffe4e1;
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-box-background: rgba(255, 255, 255, 0.8);
+$color-box-border: rgba(0, 0, 0, 0.1);
+
+// Base styles
 body {
-    font-family: Arial, sans-serif;
+    font-family: $font-base;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 header {
-    background-color: #333;
-    color: white;
-    padding: 1em 0;
+    background-color: $color-dark;
+    color: $color-text-light;
+    padding: 1.5em 0;
     text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: bold;
 }
 
 nav ul {
@@ -18,14 +44,217 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 1em;
+    margin: 0 1.5em;
 }
 
 nav ul li a {
-    color: white;
+    color: $color-text-light;
     text-decoration: none;
+    font-size: 1.2em;
 }
 
 main {
-    padding: 2em;
+    padding: 3em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: $color-dark;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+    color: $color-secondary;
+}
+
+// Box styles for readability
+.box {
+    background-color: $color-box-background;
+    border: 1px solid $color-box-border;
+    padding: 1em;
+    border-radius: 5px;
+    margin-bottom: 1.5em;
+}
+
+// Form styles
+.form-control {
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+    padding: 0.75em;
+    font-size: 1em;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+textarea.form-control {
+    width: 100%;
+    resize: vertical;
+}
+
+button.btn-primary {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    padding: 0.75em 1.5em;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+button.btn-primary:hover {
+    background-color: darken($color-primary, 10%);
+    border-color: darken($color-primary, 10%);
+}
+
+// Styles for larger screens (desktops)
+@media (min-width: 992px) {
+    body {
+        font-family: $font-desktop;
+        background-color: $color-light;
+    }
+
+    header {
+        background-color: $color-header-desktop;
+        color: $color-text-light;
+    }
+
+    nav ul li a {
+        color: $color-text-light;
+    }
+
+    main {
+        padding: 4em;
+    }
+
+    .extra-img {
+        display: none;
+    }
+}
+
+// Styles for tablets
+@media (min-width: 768px) and (max-width: 991px) {
+    body {
+        font-family: $font-tablet;
+        background-color: $color-background-tablet;
+    }
+
+    header {
+        background-color: $color-header-tablet;
+        color: $color-text-dark;
+    }
+
+    nav ul li a {
+        color: $color-text-dark;
+    }
+
+    main {
+        padding: 3em;
+    }
+
+    .extra-img {
+        display: none;
+    }
+}
+
+// Styles for phones
+@media (max-width: 767px) {
+    body {
+        font-family: $font-phone;
+        background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet, red);
+        background-size: 2000% 2000%;
+        animation: rainbow 10s linear infinite;
+    }
+
+    header {
+        background-color: transparent;
+        color: $color-text-dark;
+        background: inherit;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0.5em 0;
+    }
+
+    nav ul li a {
+        color: $color-text-dark;
+        background: inherit;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    main {
+        padding: 1em;
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-group {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        margin-bottom: 1em;
+    }
+
+    .content-wrapper img {
+        max-width: 50%;
+        height: auto;
+        transition: transform 0.5s;
+    }
+
+    .content-wrapper p {
+        background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet, red);
+        background-size: 2000% 2000%;
+        animation: rainbow-text 6s linear infinite;
+        padding: 1em;
+        border-radius: 10px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: transform 0.5s;
+    }
+
+    .content-wrapper img:hover,
+    .content-wrapper p:hover {
+        transform: rotate(360deg);
+    }
+
+    .extra-img {
+        display: block;
+    }
+
+    .content-wrapper:nth-child(odd) p {
+        animation-duration: 4s;
+    }
+
+    .content-wrapper:nth-child(even) p {
+        animation-duration: 8s;
+    }
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 200%; }
+}
+
+@keyframes rainbow-text {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 200%; }
 }
