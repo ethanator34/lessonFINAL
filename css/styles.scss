@@ -15,6 +15,10 @@ $color-primary: #007bff;
 $color-secondary: #6c757d;
 $color-box-background: rgba(255, 255, 255, 0.8);
 $color-box-border: rgba(0, 0, 0, 0.1);
+$color-table-header: #4CAF50;
+$color-table-border: #ccc;
+$color-table-row-hover: #f1f1f1;
+$color-table-row-alt: #f9f9f9;
 
 // Base styles
 body {
@@ -22,17 +26,19 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    font-size: 16px; // Base font size for rem units
+    background-color: $color-light;
 }
 
 header {
     background-color: $color-dark;
     color: $color-text-light;
-    padding: 1.5em 0;
+    padding: 1.5rem 0;
     text-align: center;
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     margin: 0;
     font-weight: bold;
 }
@@ -44,29 +50,29 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 1.5em;
+    margin: 0 1.5rem;
 }
 
 nav ul li a {
     color: $color-text-light;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 main {
-    padding: 3em;
+    padding: 3rem;
 }
 
 h2 {
-    font-size: 2em;
-    margin-bottom: 0.5em;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
     color: $color-dark;
     font-weight: bold;
 }
 
 p {
-    font-size: 1.1em;
-    margin-bottom: 1.5em;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
     color: $color-secondary;
 }
 
@@ -74,21 +80,21 @@ p {
 .box {
     background-color: $color-box-background;
     border: 1px solid $color-box-border;
-    padding: 1em;
-    border-radius: 5px;
-    margin-bottom: 1.5em;
+    padding: 1rem;
+    border-radius: 0.3125rem; // 5px to rem
+    margin-bottom: 1.5rem;
 }
 
 // Form styles
 .form-control {
-    border-radius: 5px;
+    border-radius: 0.3125rem; // 5px to rem
     transition: box-shadow 0.3s ease;
-    padding: 0.75em;
-    font-size: 1em;
+    padding: 0.75rem;
+    font-size: 1rem;
 }
 
 .form-control:focus {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2); // 10px to rem
 }
 
 textarea.form-control {
@@ -99,9 +105,9 @@ textarea.form-control {
 button.btn-primary {
     background-color: $color-primary;
     border-color: $color-primary;
-    padding: 0.75em 1.5em;
-    font-size: 1.2em;
-    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 0.3125rem; // 5px to rem
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -110,8 +116,75 @@ button.btn-primary:hover {
     border-color: darken($color-primary, 10%);
 }
 
+// Rubric styles
+.rubric-container {
+    width: 90%;
+    margin: 1.25rem auto; // 20px to rem
+    background-color: $color-box-background;
+    padding: 2rem;
+    border-radius: 0.625rem; // 10px to rem
+    box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.1); // 20px to rem
+}
+
+.rubric-container h1 {
+    text-align: center;
+    color: $color-dark;
+    margin-bottom: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.25rem; // 20px to rem
+}
+
+table, th, td {
+    border: 0.0625rem solid $color-table-border; // 1px to rem
+    padding: 0.625rem; // 10px to rem
+}
+
+th {
+    background-color: $color-table-header;
+    color: $color-text-light;
+    text-align: left;
+}
+
+td {
+    background-color: $color-light;
+    text-align: left;
+    vertical-align: top;
+}
+
+td[contenteditable="true"] {
+    background-color: $color-table-row-alt;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) td {
+    background-color: $color-table-row-alt;
+}
+
+tbody tr:hover td {
+    background-color: $color-table-row-hover;
+}
+
+tfoot td {
+    font-weight: bold;
+    background-color: $color-table-header;
+    color: $color-text-light;
+}
+
+@media (max-width: 48rem) { // 768px to rem
+    table {
+        font-size: 0.875rem; // 14px to rem
+    }
+    th, td {
+        padding: 0.5rem; // 8px to rem
+    }
+}
+
 // Styles for larger screens (desktops)
-@media (min-width: 992px) {
+@media (min-width: 62rem) { // 992px to rem
     body {
         font-family: $font-desktop;
         background-color: $color-light;
@@ -127,7 +200,7 @@ button.btn-primary:hover {
     }
 
     main {
-        padding: 4em;
+        padding: 4rem;
     }
 
     .extra-img {
@@ -136,7 +209,7 @@ button.btn-primary:hover {
 }
 
 // Styles for tablets
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 48rem) and (max-width: 61.9375rem) { // 768px to 991px to rem
     body {
         font-family: $font-tablet;
         background-color: $color-background-tablet;
@@ -152,7 +225,7 @@ button.btn-primary:hover {
     }
 
     main {
-        padding: 3em;
+        padding: 3rem;
     }
 
     .extra-img {
@@ -161,7 +234,7 @@ button.btn-primary:hover {
 }
 
 // Styles for phones
-@media (max-width: 767px) {
+@media (max-width: 47.9375rem) { // 767px to rem
     body {
         font-family: $font-phone;
         background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet, red);
@@ -183,7 +256,7 @@ button.btn-primary:hover {
 
     nav ul li {
         display: block;
-        margin: 0.5em 0;
+        margin: 0.5rem 0;
     }
 
     nav ul li a {
@@ -194,7 +267,7 @@ button.btn-primary:hover {
     }
 
     main {
-        padding: 1em;
+        padding: 1rem;
     }
 
     .content-wrapper {
@@ -206,8 +279,8 @@ button.btn-primary:hover {
     .image-group {
         display: flex;
         justify-content: center;
-        gap: 1em;
-        margin-bottom: 1em;
+        gap: 1rem;
+        margin-bottom: 1rem;
     }
 
     .content-wrapper img {
@@ -220,8 +293,8 @@ button.btn-primary:hover {
         background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet, red);
         background-size: 2000% 2000%;
         animation: rainbow-text 6s linear infinite;
-        padding: 1em;
-        border-radius: 10px;
+        padding: 1rem;
+        border-radius: 0.625rem; // 10px to rem
         text-align: center;
         width: 100%;
         box-sizing: border-box;
